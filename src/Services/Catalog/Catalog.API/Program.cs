@@ -1,8 +1,35 @@
 var configuration = GetConfiguration();
 
-var host = CreateHostBuilder(configuration,args);
+try
+{
+    var host = CreateHostBuilder(configuration, args);
+    Log.Information("Configuring web host ({ApplicationContext})...", Program.AppName);
+    Log.Information("Applying migrations ({ApplicationContext})...", Program.AppName);
 
-host.Run();
+
+    host.MigrateDataBase<Program>((services) =>
+    {
+
+        var context = services.GetService<CatalogContext>();
+        var env = services.GetService<IWebHostEnvironment>();
+        var logger = services.GetRequiredService<ILogger<CatalogContextSeed>>();
+        new CatalogContextSeed().MagirateAndSeedAsync(context, env, logger).Wait();
+
+    });
+   
+
+    Log.Information("Starting web host ({ApplicationContext})...", Program.AppName);
+    host.Run();
+
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 
 
 
@@ -36,4 +63,17 @@ Host.CreateDefaultBuilder(args)
       .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
       .CaptureStartupErrors(false);
    })
+   .UseSerilog(SeriLogger.Configure)
    .Build();
+
+
+
+
+
+
+
+public partial class Program
+{
+    public static string? Namespace = typeof(Startup).Namespace;
+    public static string? AppName = "Catalog.API";
+}

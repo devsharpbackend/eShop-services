@@ -8,17 +8,29 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-COPY ["src/Services/Catalog/Catalog.API/Catalog.API.csproj", "src/Services/Catalog/Catalog.API/"]
-RUN dotnet restore "src/Services/Catalog/Catalog.API/Catalog.API.csproj"
-COPY . .
 
-WORKDIR "/src/src/Services/Catalog/Catalog.API"
-RUN dotnet build "Catalog.API.csproj" -c Release -o /app/build
+COPY ["eShop-services.sln". "eShop-services.sln"]
+COPY ["src/Services/Catalog/Catalog.API/Catalog.API.csproj", "src/Services/Catalog/Catalog.API/"]
+COPY ["BuildingBlocks/Logging/Common.Logging/Common.Logging.csproj", "BuildingBlocks/Logging/Common.Logging/"]
+COPY ["BuildingBlocks/Host/Common.Host/Common.Host.csproj", "BuildingBlocks/Host/Common.Host/"]
+
+
+#RUN dotnet restore "src/Services/Catalog/Catalog.API/Catalog.API.csproj"
+
+
+COPY "docker-compose.dcproj" "docker-compose.dcproj"
+
+COPY "NuGet.config" "NuGet.config"
+
+RUN dotnet restore "eShop-services.sln"
+
+COPY . .
+WORKDIR /src/Services/Catalog/Catalog.API
+RUN dotnet publish --no-restore -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Catalog.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Catalog.API.dll"]
