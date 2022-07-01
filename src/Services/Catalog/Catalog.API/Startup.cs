@@ -1,5 +1,9 @@
 ﻿
 
+
+
+using Newtonsoft.Json;
+
 namespace eShop.Services.Catalog.CatalogAPI;
 public class Startup
 {
@@ -11,7 +15,9 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCustomMVC(Configuration)
-            .AddSwagger(Configuration);
+            .AddSwagger(Configuration)
+            .AddCustomDbContext(Configuration)
+            .AddCustomOptions(Configuration);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,5 +86,57 @@ public static class CustomExtensionMethods
         return services;
 
     }
+
+
+    public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddEntityFrameworkSqlServer()
+            .AddDbContext<CatalogContext>(options =>
+            {
+                options.UseSqlServer(configuration["ConnectionString"],
+                                        sqlServerOptionsAction: sqlOptions =>
+                                        {
+                                            sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                                            sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                        });
+            });
+
+
+
+        return services;
+    }
+
+
+    public static IServiceCollection AddCustomOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<ApiBehaviorOptions>(options =>
+        {
+            options.ClientErrorMapping[404].Title = " Not Found Resouce Or Api ";
+            options.ClientErrorMapping[403].Title = "Forbidden";
+            options.InvalidModelStateResponseFactory = context =>
+            {
+                var values = context.ModelState.Values.Where(state => state.Errors.Count != 0)
+               .Select(state => new { ErrorMessage = state.Errors.Select(p => p.ErrorMessage) });
+
+                string ErrorDetials = JsonConvert.SerializeObject(values) ?? "Please refer to the errors property for additional details.";
+
+                var problemDetails = new ValidationProblemDetails(context.ModelState)
+                {
+                    Instance = context.HttpContext.Request.Path,
+                    Status = StatusCodes.Status400BadRequest,
+                    Detail = ErrorDetials// "Please refer to the errors property for additional details."
+                };
+
+                return new BadRequestObjectResult(problemDetails)
+                {
+                    ContentTypes = { "application/problem+json", "application/problem+xml" }
+                };
+            };
+        });
+
+
+        return services;
+    }
+
 
 }
