@@ -1,2 +1,15 @@
 ﻿global using eShop.Services.Catalog.CatalogAPI;
 global using Microsoft.OpenApi.Models;
+global using Microsoft.AspNetCore.Mvc;
+global using Serilog;
+global using Serilog.Formatting.Compact;
+global using eShop.BuildingBlocks.Logging.CommonLogging;
+global using eShop.Services.CatalogAPI.Domain.Entity;
+global using Microsoft.EntityFrameworkCore;
+global using eShop.Services.CatalogAPI.Infrastructure.EntityConfigurations;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using eShop.Services.CatalogAPI.Infrastructure;
+global using System.Reflection;
+global using Polly;
+global using System.Data.SqlClient;

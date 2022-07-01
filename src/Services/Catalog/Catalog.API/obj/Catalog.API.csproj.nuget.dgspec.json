@@ -4,14 +4,14 @@
     "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
   },
   "projects": {
-    "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
+    "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
-        "projectName": "Catalog.API",
-        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
+        "projectName": "Common.Logging",
+        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
         "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
-        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
+        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,13 +40,125 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+            "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[1.14.0, )"
+              "version": "[5.0.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.2.1-dev-00787, )"
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "Serilog.Sinks.Http": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.Seq": {
+              "target": "Package",
+              "version": "[5.1.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectName": "Catalog.API",
+        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+                "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [

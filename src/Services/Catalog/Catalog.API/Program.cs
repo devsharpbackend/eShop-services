@@ -1,8 +1,51 @@
+
+
+
 var configuration = GetConfiguration();
 
-var host = CreateHostBuilder(configuration,args);
+try
+{
+    var host = CreateHostBuilder(configuration, args);
+    Log.Information("Configuring web host ({ApplicationContext})...", Program.AppName);
+    Log.Information("Applying migrations ({ApplicationContext})...", Program.AppName);
+    // Migration
+    using (var scope = host.Services.CreateScope())
+    {
 
-host.Run();
+
+
+        var context = scope.ServiceProvider.GetService<CatalogContext>();
+        var env = scope.ServiceProvider.GetService<IWebHostEnvironment>();
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<CatalogContextSeed>>();
+
+       var retry= Policy.Handle<SqlException>()
+                            .WaitAndRetry(new TimeSpan[]
+                            {
+                                TimeSpan.FromSeconds(3),
+                                TimeSpan.FromSeconds(5),
+                                TimeSpan.FromSeconds(8),
+                            });
+
+        retry.Execute(() =>
+        {
+            new CatalogContextSeed().MagirateAndSeedAsync(context, env, logger).Wait();
+        });
+
+        
+    }
+
+    Log.Information("Starting web host ({ApplicationContext})...", Program.AppName);
+    host.Run();
+
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 
 
 
@@ -36,4 +79,17 @@ Host.CreateDefaultBuilder(args)
       .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
       .CaptureStartupErrors(false);
    })
+   .UseSerilog(SeriLogger.Configure)
    .Build();
+
+
+
+
+
+
+
+public partial class Program
+{
+    public static string? Namespace = typeof(Startup).Namespace;
+    public static string? AppName = "Catalog.API";
+}
