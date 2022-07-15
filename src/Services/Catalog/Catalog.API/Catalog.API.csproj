@@ -38,8 +38,4 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Logging\Common.Logging\Common.Logging.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Applicatioin\" />
-  </ItemGroup>
-
 </Project>

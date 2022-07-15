@@ -8176,20 +8176,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\javan\\.nuget\\packages\\": {}
+    "C:\\Users\\devsharp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+      "projectUniqueName": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
       "projectName": "Catalog.API",
-      "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
-      "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
-      "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
+      "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+      "packagesPath": "C:\\Users\\devsharp\\.nuget\\packages\\",
+      "outputPath": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "F:\\Microservice\\Sessions\\eShop-services\\src\\NuGet.Config",
-        "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "H:\\MicroServiceProject\\eShop-services\\src\\NuGet.Config",
+        "C:\\Users\\devsharp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8203,11 +8203,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
-              "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
+            "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+              "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
             },
-            "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
-              "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+            "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+              "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
             }
           }
         }
@@ -8293,7 +8293,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,18 +13,13 @@ class CatalogTypeEntityTypeConfiguration
             .UseHiLo("catalog_type_hilo")
             .IsRequired();
 
-        builder.Property(cb => cb.Type)
-            .IsRequired()
-            .HasMaxLength(100);
-
 
         builder.UsePropertyAccessMode(PropertyAccessMode.Field);
 
         builder.Ignore(b => b.DomainEvents);
 
 
-        builder
-           .Property<string>("_type")
+        builder.Property(p=>p.Type).HasField("_type")      
            .UsePropertyAccessMode(PropertyAccessMode.Field)
            .HasColumnName("Type")
             .IsRequired(true)

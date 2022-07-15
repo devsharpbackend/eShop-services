@@ -28,6 +28,13 @@ public class CatalogContextSeed
 
             GetCatalogItemPictures(contentRootPath, picturePath);
         }
+
+        if (!context.Suppliers.Any())
+        {
+            await context.Suppliers.AddRangeAsync(SeedSupplier());
+
+            await context.SaveChangesAsync();
+        }
     }
 
     private IEnumerable<CatalogType> SeedCatalogTypes()
@@ -38,6 +45,14 @@ public class CatalogContextSeed
             new CatalogType("T-Shirt") ,
             new CatalogType( "Sheet") ,
             new CatalogType( "USB Memory Stick") 
+        };
+    }
+    private IEnumerable<Supplier> SeedSupplier()
+    {
+        return new List<Supplier>()
+        {
+            new Supplier(supplierName:"supplier1",catalogTypeId:2),
+            new Supplier(supplierName:"supplier2",catalogTypeId:2),
         };
     }
 
