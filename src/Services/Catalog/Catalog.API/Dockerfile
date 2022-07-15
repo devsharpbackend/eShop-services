@@ -11,9 +11,13 @@ WORKDIR /src
 
 COPY ["eShop-services.sln". "eShop-services.sln"]
 COPY ["src/Services/Catalog/Catalog.API/Catalog.API.csproj", "src/Services/Catalog/Catalog.API/"]
+COPY ["src/Services/Discount/Discount.API/Discount.API.csproj", "src/Services/Discount/Discount.API/"]
+COPY ["BuildingBlocks/Event/Common.Event/Common.Event.csproj", "BuildingBlocks/Event/Common.Event/"]
 COPY ["BuildingBlocks/Logging/Common.Logging/Common.Logging.csproj", "BuildingBlocks/Logging/Common.Logging/"]
 COPY ["BuildingBlocks/Host/Common.Host/Common.Host.csproj", "BuildingBlocks/Host/Common.Host/"]
-
+COPY ["src/Services/Catalog/Catalog.Domain/Catalog.Domain.csproj", "src/Services/Catalog/Catalog.Domain/"]
+COPY ["src/Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "src/Services/Catalog/Catalog.Infrastructure/"]
+COPY ["BuildingBlocks/Event/ZeroMqEvent/ZeroMqEvent.csproj", "BuildingBlocks/Event/ZeroMqEvent/"]
 
 #RUN dotnet restore "src/Services/Catalog/Catalog.API/Catalog.API.csproj"
 
@@ -32,5 +36,6 @@ FROM build AS publish
 
 FROM base AS final
 WORKDIR /app
+COPY --from=build /src/Services/Catalog/Catalog.API/Proto /app/Proto
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Catalog.API.dll"]
