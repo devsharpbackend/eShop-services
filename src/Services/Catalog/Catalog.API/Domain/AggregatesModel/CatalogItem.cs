@@ -19,7 +19,7 @@ public class CatalogItem : Entity, IAggregateRoot
     {
         this._name = name?? throw new CatalogDomainException("The name is empty and must be entered");
         this._description = description;
-        this._price = price==0?throw new CatalogDomainException("The name is empty and must be entered") :price;
+        this._price = price==0?throw new CatalogDomainException("The name is empty and must be entered.") :price;
         this._priceWithDiscount = priceWithDiscount;
         this._isDiscount = isDiscount;
         this._discount = discount;
