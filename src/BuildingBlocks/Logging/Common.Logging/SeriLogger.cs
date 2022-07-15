@@ -21,6 +21,5 @@ public static class SeriLogger
               .WriteTo.Seq(string.IsNullOrWhiteSpace(seqServerUrl) ? "http://seq" : seqServerUrl)
               .WriteTo.Http(string.IsNullOrWhiteSpace(logstashUrl) ? "http://logstash:8080" : logstashUrl, null)
               .ReadFrom.Configuration(context.Configuration);
-
        };
 }

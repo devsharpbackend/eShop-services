@@ -1,3 +1,5 @@
+
+
 var configuration = GetConfiguration();
 
 try
@@ -16,7 +18,16 @@ try
         new CatalogContextSeed().MagirateAndSeedAsync(context, env, logger).Wait();
 
     });
-   
+
+
+    host.MigrateDataBase<Program>((services) =>
+    {
+        var integrationEventLogContext = services.GetRequiredService<IntegrationEventLogContext>();
+
+        integrationEventLogContext.Database.Migrate();
+
+    });
+
 
     Log.Information("Starting web host ({ApplicationContext})...", Program.AppName);
     host.Run();
@@ -48,16 +59,25 @@ IConfiguration GetConfiguration()
 IHost CreateHostBuilder(IConfiguration configuration, string[] args) =>
 
 Host.CreateDefaultBuilder(args)
+  .ConfigureLogging(logging =>
+  {
+      logging.AddFilter("Grpc", LogLevel.Debug);
+  })
    .ConfigureWebHostDefaults(webBuilder =>
    {
        webBuilder.UseStartup<Startup>()
-       //.ConfigureKestrel(options =>
-       //{
-       //    options.Listen(IPAddress.Any, 80, listenOptions =>
-       //    {
-       //        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-       //    });
-       //})
+       .ConfigureKestrel(options =>
+       {
+           var ports = GetDefinedPorts(configuration);
+           options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+           {
+               listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+           });
+           options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+           {
+               listenOptions.Protocols = HttpProtocols.Http2;
+           });
+       })
       .UseContentRoot(Directory.GetCurrentDirectory())
       .UseWebRoot("Pics")
       .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
@@ -68,6 +88,14 @@ Host.CreateDefaultBuilder(args)
 
 
 
+
+
+(int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
+{
+    var grpcPort = config.GetValue("GRPC_PORT", 81);
+    var port = config.GetValue("PORT", 80);
+    return (port, grpcPort);
+}
 
 
 
