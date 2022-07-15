@@ -1,0 +1,14 @@
+﻿global using Serilog;
+global using eShop.BuildingBlocks.Logging.CommonLogging;
+global using eShop.Services.IdentityAPI;
+global using IdentityServer4;
+global using IdentityServer4.Models;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Extensions.Logging;
+global using System.Reflection;
+global using System.Security.Cryptography.X509Certificates;
+global using Microsoft.Extensions.Options;
+global using IdentityServer4.EntityFramework.DbContexts;
+global using eShop.BuildingBlocks.Host.CommonHost;
+global using IdentityServer4.Services;

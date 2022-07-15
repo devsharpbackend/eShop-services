@@ -5,6 +5,15 @@ services:
   sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest
 
+  discountdb:
+    image: postgres
+
+  basketdata:
+    image: redis:alpine
+  
+
+  rabbitmq:
+    image: masstransit/rabbitmq
 
   catalog-api:
     image: ${REGISTRY:-eshop}/catalog.api-${PLATFORM:-linux}-${TAG:-latest}
@@ -13,3 +22,60 @@ services:
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
     depends_on:
       - sqldata
+      - rabbitmq
+
+  basket-api:
+    image: ${REGISTRY:-eshop}/basket.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+    depends_on:
+      - basketdata
+      - rabbitmq
+
+
+  discount-api:
+    image: ${REGISTRY:-eshop}/dsicount.api-${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+    depends_on:
+      - discountdb
+      - rabbitmq
+
+  ordering-api:
+    image: ${REGISTRY:-eshop}/ordering.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+    depends_on:
+      - sqldata
+      - rabbitmq
+
+
+  payemnt-api:
+   image: ${REGISTRY:-eshop}/payment.api-${PLATFORM:-linux}-${TAG:-latest}
+   build:
+      context: .
+      dockerfile: Services/Payment/Payment.API/Dockerfile
+   depends_on:
+      - rabbitmq
+
+  webshoppingagg:
+    image: ${REGISTRY:-eshop}/webshoppingagg:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ApiGateways/Web.Bff.Shopping/aggregator/Dockerfile
+    depends_on:
+      - sqldata
+      - discountdb
+      - basketdata
+      - catalog-api
+      - payemnt-api
+      - ordering-api
+      - discount-api
+      - basket-api
+
+
+  webshoppingapigw:
+    image: envoyproxy/envoy:v1.11.1
