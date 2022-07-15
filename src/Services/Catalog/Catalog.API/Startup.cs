@@ -1,9 +1,5 @@
 ﻿
 
-
-
-using Newtonsoft.Json;
-
 namespace eShop.Services.Catalog.CatalogAPI;
 public class Startup
 {
@@ -14,10 +10,51 @@ public class Startup
     }
     public void ConfigureServices(IServiceCollection services)
     {
+
         services.AddCustomMVC(Configuration)
             .AddSwagger(Configuration)
-            .AddCustomDbContext(Configuration)
-            .AddCustomOptions(Configuration);
+            .AddCustomOptions(Configuration)
+            .AddDomain(Configuration)
+            .AddInfrastructure(Configuration)
+            .AddCommonErrorHandler(Configuration)
+            .AddGrpcServices(Configuration)
+            .AddEventBusMassTransit(Configuration);
+
+        if (Configuration["UseGrpc"] == "true")
+        {
+            services.AddScoped<IDiscountService, DiscountGrpcService>();
+        }
+        else
+        {
+            services.AddHttpClient<IDiscountService, DiscountService>()
+               // Each time you get an HttpClient object from the IHttpClientFactory
+               // , a new instance is returned. But each HttpClient uses an HttpMessageHandler
+               // that's pooled and reused by the IHttpClientFactory to reduce resource consumption,
+               // as long as the HttpMessageHandler's lifetime hasn't expired.
+               .SetHandlerLifetime(TimeSpan.FromMinutes(5))
+                   .AddPolicyHandler(CustomExtensionMethods.GetRetryPolicy());
+        }
+
+
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ExceptionBehavior<,>));
+
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehaviour<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+
+
+
+        services.AddMediatR(typeof(Startup).Assembly);
+
+        //services.AddZeroMq((cfg) =>
+       // {
+          //  cfg.AddConsumer<DiscountCreatedEventHandler1, DiscountCreatedIntegrationEvent>(Configuration["DiscountZerqUrl"]);
+        //    cfg.ConfigPublisher("tcp://*:12345");
+
+       // });
+
+
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,10 +71,10 @@ public class Startup
 
         app.UseSwagger()
              .UseSwaggerUI(c =>
-                 {
-                   c.SwaggerEndpoint($"{ (!string.IsNullOrEmpty(pathBase) ? pathBase : string.Empty) }/swagger/v1/swagger.json", "Catalog.API V1");
-         
-               });
+             {
+                 c.SwaggerEndpoint($"{ (!string.IsNullOrEmpty(pathBase) ? pathBase : string.Empty) }/swagger/v1/swagger.json", "Catalog.API V1");
+
+             });
 
 
         app.UseRouting();
@@ -46,6 +83,24 @@ public class Startup
         {
             endpoints.MapDefaultControllerRoute();
             endpoints.MapControllers();
+
+            endpoints.MapGet("/_proto/", async ctx =>
+            {
+                ctx.Response.ContentType = "text/plain";
+                using var fs = new FileStream(Path.Combine(env.ContentRootPath, "Proto", "catalog.proto"), FileMode.Open, FileAccess.Read);
+                using var sr = new StreamReader(fs);
+                while (!sr.EndOfStream)
+                {
+                    var line = await sr.ReadLineAsync();
+                    if (line != "/* >>" || line != "<< */")
+                    {
+                        await ctx.Response.WriteAsync(line);
+                    }
+                }
+            });
+
+            endpoints.MapGrpcService<CatalogService>();
+
         });
     }
 }
@@ -55,7 +110,10 @@ public static class CustomExtensionMethods
 {
     public static IServiceCollection AddCustomMVC(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddControllers()
+        services.AddControllers((options) =>
+        {
+            options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+        })
         .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
         services.AddCors(options =>
@@ -88,43 +146,24 @@ public static class CustomExtensionMethods
     }
 
 
-    public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddEntityFrameworkSqlServer()
-            .AddDbContext<CatalogContext>(options =>
-            {
-                options.UseSqlServer(configuration["ConnectionString"],
-                                        sqlServerOptionsAction: sqlOptions =>
-                                        {
-                                            sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                                            sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                                        });
-            });
-
-
-
-        return services;
-    }
 
 
     public static IServiceCollection AddCustomOptions(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<CatalogSetting>(configuration);
+
         services.Configure<ApiBehaviorOptions>(options =>
         {
             options.ClientErrorMapping[404].Title = " Not Found Resouce Or Api ";
             options.ClientErrorMapping[403].Title = "Forbidden";
             options.InvalidModelStateResponseFactory = context =>
             {
-                var values = context.ModelState.Values.Where(state => state.Errors.Count != 0)
-               .Select(state => new { ErrorMessage = state.Errors.Select(p => p.ErrorMessage) });
-
-                string ErrorDetials = JsonConvert.SerializeObject(values) ?? "Please refer to the errors property for additional details.";
 
                 var problemDetails = new ValidationProblemDetails(context.ModelState)
                 {
                     Instance = context.HttpContext.Request.Path,
                     Status = StatusCodes.Status400BadRequest,
-                    Detail = ErrorDetials// "Please refer to the errors property for additional details."
+                    Detail = "Please refer to the errors property for additional details."
                 };
 
                 return new BadRequestObjectResult(problemDetails)
@@ -134,6 +173,71 @@ public static class CustomExtensionMethods
             };
         });
 
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        //services.AddFluentValidationAutoValidation(config =>
+        //{
+        //    config.DisableDataAnnotationsValidation = true;
+        //});
+
+
+        return services;
+    }
+    public static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+    {
+        return HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
+            .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+    }
+
+    public static IServiceCollection AddGrpcServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddGrpc(options =>
+        {
+            options.EnableDetailedErrors = true;
+            options.Interceptors.Add<LogServerInterceptor>();
+            options.Interceptors.Add<GrpcServerExceptionInterceptor>();
+        });
+
+
+
+        services.AddTransient<ClientLoggingInterceptor>();
+        services.AddTransient<GrpcClientExceptionInterceptor>();
+        services.AddGrpcClient<CatalogDiscountGrpc.CatalogDiscountGrpcClient>((services, options) =>
+        {
+            options.Address = new Uri(configuration["DiscountGrpcUrl"]);
+        }).AddInterceptor<ClientLoggingInterceptor>()
+        .AddInterceptor<GrpcClientExceptionInterceptor>();
+
+
+        return services;
+    }
+
+
+    public static IServiceCollection AddEventBusMassTransit(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddMassTransit(x =>
+        {
+            x.AddConsumers(Assembly.GetExecutingAssembly());
+            x.UsingRabbitMq((context, cfg) =>
+            {
+                cfg.Publish<IntegrationEvent>(p =>
+                {
+                    p.Exclude = true;
+
+                });
+
+                cfg.UseDelayedMessageScheduler();
+                cfg.Host("rabbitmq", "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+
+                cfg.ConfigureEndpoints(context);
+            });
+        });
 
         return services;
     }
