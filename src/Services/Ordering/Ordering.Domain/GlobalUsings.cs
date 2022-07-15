@@ -1,0 +1,10 @@
+﻿global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Configuration;
+global using eShop.Services.Ordering.Domain.Exceptions;
+global using eShop.Services.Ordering.Domain.SeedWork;
+global using eShop.Services.Ordering.Domain.Seedwork;
+global using eShop.Services.Ordering.Domain.AggregatesModel.OrderAggregate;
+global using eShop.Services.Ordering.Domain.Events;
+global using eShop.Services.Ordering.Domain.AggregatesModel.BuyerAggregate;
+global using MediatR; 
