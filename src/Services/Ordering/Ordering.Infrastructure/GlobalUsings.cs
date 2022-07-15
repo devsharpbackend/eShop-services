@@ -1,0 +1,16 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using eShop.Services.Ordering.Domain.AggregatesModel.OrderAggregate;
+global using eShop.Services.Ordering.Domain.AggregatesModel.BuyerAggregate;
+global using eShop.Services.Ordering.Domain.Seedwork;
+global using MediatR;
+global using Microsoft.EntityFrameworkCore.Storage;
+global using eShop.Services.Ordering.Infrastructure.EntityConfigurations;
+global using System.Data;
+global using Microsoft.EntityFrameworkCore.Design;
+global using Microsoft.Extensions.DependencyInjection;
+global using eShop.BuildingBlocks.Event.IntegrationEventLogEF;
+global using Microsoft.Extensions.Configuration;
+global using eShop.Services.Ordering.Infrastructure.Repositories;
+global using eShop.Services.Ordering.Domain.Exceptions;
+global using eShop.Services.Ordering.Infrastructure.Idempotency;
