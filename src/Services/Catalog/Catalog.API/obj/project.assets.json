@@ -23,6 +23,53 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
+      "FluentValidation/11.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/11.1.2": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.1.0",
+          "FluentValidation.DependencyInjectionExtensions": "11.1.0"
+        },
+        "compile": {
+          "lib/net6.0/FluentValidation.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "FluentValidation.DependencyInjectionExtensions/11.1.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.1.0",
+          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2406,6 +2453,79 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Catalog.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common.Logging": "1.0.0",
+          "Dapper": "2.0.123",
+          "MediatR": "10.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
+          "Microsoft.EntityFrameworkCore.Proxies": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.14.0",
+          "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.3",
+          "Polly.Contrib.WaitAndRetry": "1.1.1",
+          "Serilog.AspNetCore": "5.0.0",
+          "Swashbuckle.AspNetCore": "6.2.3",
+          "System.Data.SqlClient": "4.8.2",
+          "System.Reflection.TypeExtensions": "4.7.0"
+        },
+        "compile": {
+          "bin/placeholder/Catalog.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Catalog.Domain.dll": {}
+        }
+      },
+      "Catalog.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Catalog.Domain": "1.0.0",
+          "Common.Host": "1.0.0",
+          "Common.Logging": "1.0.0",
+          "Dapper": "2.0.123",
+          "MediatR": "10.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
+          "Microsoft.EntityFrameworkCore.Proxies": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.14.0",
+          "Newtonsoft.Json": "13.0.1",
+          "Polly": "7.2.3",
+          "Polly.Contrib.WaitAndRetry": "1.1.1",
+          "Serilog.AspNetCore": "5.0.0",
+          "Swashbuckle.AspNetCore": "6.2.3",
+          "System.Data.SqlClient": "4.8.2",
+          "System.Reflection.TypeExtensions": "4.7.0"
+        },
+        "compile": {
+          "bin/placeholder/Catalog.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Catalog.Infrastructure.dll": {}
+        }
+      },
+      "Common.ErrorHandler/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "System.Data.SqlClient": "4.8.2"
+        },
+        "compile": {
+          "bin/placeholder/Common.ErrorHandler.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.ErrorHandler.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Common.Host/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2474,6 +2594,81 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
+      ]
+    },
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "FluentValidation/11.1.0": {
+      "sha512": "Ld7w+2jOmnhQqFkngEGuEWTRa5j6u4Xzli7jKxRtbA5PtuHHcpin01qxvxYL0LomeJuzRMGAOURu2rKONdjKQA==",
+      "type": "package",
+      "path": "fluentvalidation/11.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.1.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
+      ]
+    },
+    "FluentValidation.AspNetCore/11.1.2": {
+      "sha512": "Lw/8btATvMYW9QYR75CAw1Wp0AJhr9f7cxs1IyklQo6emvy+JaM27BCUe2MZKDOQTLpP4fmVVppPQHHc7HOEjQ==",
+      "type": "package",
+      "path": "fluentvalidation.aspnetcore/11.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.aspnetcore.11.1.2.nupkg.sha512",
+        "fluentvalidation.aspnetcore.nuspec",
+        "lib/net5.0/FluentValidation.AspNetCore.dll",
+        "lib/net5.0/FluentValidation.AspNetCore.xml",
+        "lib/net6.0/FluentValidation.AspNetCore.dll",
+        "lib/net6.0/FluentValidation.AspNetCore.xml",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.xml"
+      ]
+    },
+    "FluentValidation.DependencyInjectionExtensions/11.1.0": {
+      "sha512": "M9U2hLZc8bx0JthQKsN9SVgQSHJeLMcSV/uCmJ23U+/7HCSeOYD4OXoF+p5U3bLGz6Yp7h0/0XbSL+Qv2S38EQ==",
+      "type": "package",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.dependencyinjectionextensions.11.1.0.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.nuspec",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -8145,6 +8340,21 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "Catalog.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Catalog.Domain/Catalog.Domain.csproj",
+      "msbuildProject": "../Catalog.Domain/Catalog.Domain.csproj"
+    },
+    "Catalog.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Catalog.Infrastructure/Catalog.Infrastructure.csproj",
+      "msbuildProject": "../Catalog.Infrastructure/Catalog.Infrastructure.csproj"
+    },
+    "Common.ErrorHandler/1.0.0": {
+      "type": "project",
+      "path": "../../../BuildingBlocks/ErrorHandler/Common.ErrorHandler/Common.ErrorHandler.csproj",
+      "msbuildProject": "../../../BuildingBlocks/ErrorHandler/Common.ErrorHandler/Common.ErrorHandler.csproj"
+    },
     "Common.Host/1.0.0": {
       "type": "project",
       "path": "../../../BuildingBlocks/Host/Common.Host/Common.Host.csproj",
@@ -8158,8 +8368,13 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Catalog.Domain >= 1.0.0",
+      "Catalog.Infrastructure >= 1.0.0",
+      "Common.ErrorHandler >= 1.0.0",
       "Common.Host >= 1.0.0",
       "Common.Logging >= 1.0.0",
+      "Dapper >= 2.0.123",
+      "FluentValidation.AspNetCore >= 11.1.2",
       "MediatR >= 10.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Proxies >= 6.0.0",
@@ -8203,11 +8418,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj": {
+              "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj"
+            },
             "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
               "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
             },
             "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
               "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+            },
+            "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+              "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj"
+            },
+            "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj": {
+              "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj"
             }
           }
         }
@@ -8222,6 +8446,14 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.0.123, )"
+          },
+          "FluentValidation.AspNetCore": {
+            "target": "Package",
+            "version": "[11.1.2, )"
+          },
           "MediatR": {
             "target": "Package",
             "version": "[10.0.1, )"

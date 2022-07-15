@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "OXk4wWLXZSlJhbyvmQmEJg0j04q+f87oBx7U7svjzwQL8glKxsUjnEaeQtIcJhRypCxZI4RMutqYnL0CYTA+Pw==",
+  "dgSpecHash": "Lq7W/kqjcc/WurkbkyhDraHSvXEnF8LJ0hY/5p9emEzNgn2XP6xMHom+AGr8An/jByVhT0CIAT623ui5Fxla3w==",
   "success": true,
   "projectFilePath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\javan\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
+    "C:\\Users\\javan\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\javan\\.nuget\\packages\\fluentvalidation\\11.1.0\\fluentvalidation.11.1.0.nupkg.sha512",
+    "C:\\Users\\javan\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.1.2\\fluentvalidation.aspnetcore.11.1.2.nupkg.sha512",
+    "C:\\Users\\javan\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.1.0\\fluentvalidation.dependencyinjectionextensions.11.1.0.nupkg.sha512",
     "C:\\Users\\javan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\javan\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
     "C:\\Users\\javan\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
