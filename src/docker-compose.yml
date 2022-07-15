@@ -5,6 +5,8 @@ services:
   sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest
 
+  discountdb:
+    image: postgres
 
   catalog-api:
     image: ${REGISTRY:-eshop}/catalog.api-${PLATFORM:-linux}-${TAG:-latest}
@@ -13,3 +15,12 @@ services:
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
     depends_on:
       - sqldata
+
+
+  discount-api:
+    image: ${REGISTRY:-eshop}/dsicount.api-${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+    depends_on:
+      - discountdb
