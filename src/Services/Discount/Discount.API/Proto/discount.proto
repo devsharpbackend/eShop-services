@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+/* >>
+import "google/api/annotations.proto";
+<< */
+
+
+package DiscountGrpc;
+
+message CatalogDiscountRequest {
+	int32 catalogId = 1;
+}
+
+message CatalogItemDiscountResponse {
+	int32 id = 1;
+	string name = 2;
+    int32 catalogId=3;
+	double amount=4;
+	string description=5;
+
+}
+
+message CatalogDiscountResponse {
+	int64 count = 3;
+	repeated CatalogItemDiscountResponse data = 4;
+}
+
+
+service CatalogDiscountGrpc {
+  
+  rpc GetDiscountByCatalogId (CatalogDiscountRequest) returns (CatalogItemDiscountResponse) {}
+}

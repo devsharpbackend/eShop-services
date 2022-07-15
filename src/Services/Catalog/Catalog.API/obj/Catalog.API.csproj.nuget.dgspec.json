@@ -1,20 +1,298 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
   },
   "projects": {
-    "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
-        "projectName": "Common.Host",
-        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj",
+        "projectName": "Common.ErrorHandler",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj",
         "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
-        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\obj\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "F:\\Microservice\\Sessions\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj",
+        "projectName": "Common.Event",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj",
+        "projectName": "IntegrationEventLogEF",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\ZeroMqEvent.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\ZeroMqEvent.csproj",
+        "projectName": "ZeroMqEvent",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\ZeroMqEvent.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "NetMQ": {
+              "target": "Package",
+              "version": "[4.0.1.8, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
+        "projectName": "Common.Host",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -103,17 +381,17 @@
         }
       }
     },
-    "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
         "projectName": "Common.Logging",
-        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
         "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
-        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\obj\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "F:\\Microservice\\Sessions\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -189,17 +467,17 @@
         }
       }
     },
-    "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
         "projectName": "Catalog.API",
-        "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
         "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
-        "outputPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "F:\\Microservice\\Sessions\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -215,11 +493,26 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
-                "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\ErrorHandler\\Common.ErrorHandler\\Common.ErrorHandler.csproj"
               },
-              "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
-                "projectPath": "F:\\Microservice\\Sessions\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\Common.Event\\Common.Event.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\ZeroMqEvent.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\ZeroMqEvent\\ZeroMqEvent.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj"
               }
             }
           }
@@ -234,6 +527,167 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.2.1, )"
+            },
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.21.5, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.48.0, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.48.0, )"
+            },
+            "Grpc.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.48.0, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.Extensions.Http.Polly": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
+            },
+            "Polly.Contrib.WaitAndRetry": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
+            "System.Reflection.TypeExtensions": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj",
+        "projectName": "Catalog.Domain",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.1, )"
@@ -298,9 +752,133 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj",
+        "projectName": "Catalog.Infrastructure",
+        "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\javan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\javan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Event\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              },
+              "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj": {
+                "projectPath": "C:\\Users\\javan\\Desktop\\Testgrpc\\eShop-services\\src\\Services\\Catalog\\Catalog.Domain\\Catalog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
             },
+            "MediatR": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.3, )"
+            },
+            "Polly.Contrib.WaitAndRetry": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.Reflection.TypeExtensions": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
