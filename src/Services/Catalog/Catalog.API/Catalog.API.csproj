@@ -12,9 +12,13 @@
 
   <ItemGroup>
     <Compile Remove="Application\**" />
+    <Compile Remove="Domain\**" />
     <Content Remove="Application\**" />
+    <Content Remove="Domain\**" />
     <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Domain\**" />
     <None Remove="Application\**" />
+    <None Remove="Domain\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,15 +35,15 @@
 	<PackageReference Include="MediatR" Version="10.0.1" />
 	<PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
 	<PackageReference Include="Polly" Version="7.2.3" />
+	<PackageReference Include="Dapper" Version="2.0.123" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\ErrorHandler\Common.ErrorHandler\Common.ErrorHandler.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Host\Common.Host\Common.Host.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Logging\Common.Logging\Common.Logging.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Applicatioin\" />
+    <ProjectReference Include="..\Catalog.Domain\Catalog.Domain.csproj" />
+    <ProjectReference Include="..\Catalog.Infrastructure\Catalog.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -90,3 +90,10 @@ F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Deb
 F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\MediatR.dll
 F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\MediatR.Contracts.dll
 F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Dapper.dll
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Catalog.Domain.dll
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Catalog.Domain.pdb
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Catalog.Infrastructure.dll
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Catalog.Infrastructure.pdb
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Common.ErrorHandler.dll
+F:\Microservice\Sessions\eShop-services\src\Services\Catalog\Catalog.API\bin\Debug\net6.0\Common.ErrorHandler.pdb
