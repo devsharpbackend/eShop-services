@@ -1,9 +1,4 @@
 ﻿
-
-
-
-using Newtonsoft.Json;
-
 namespace eShop.Services.Catalog.CatalogAPI;
 public class Startup
 {
@@ -18,6 +13,13 @@ public class Startup
             .AddSwagger(Configuration)
             .AddCustomDbContext(Configuration)
             .AddCustomOptions(Configuration);
+
+
+        services.AddScoped<ISupplierRepository, SupplierRepository>();
+        services.AddScoped<ICatalogRepository, CatalogRepository>();
+
+        services.AddMediatR(typeof(Startup).Assembly);
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,6 +111,8 @@ public static class CustomExtensionMethods
 
     public static IServiceCollection AddCustomOptions(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<CatalogSetting>(configuration);
+
         services.Configure<ApiBehaviorOptions>(options =>
         {
             options.ClientErrorMapping[404].Title = " Not Found Resouce Or Api ";

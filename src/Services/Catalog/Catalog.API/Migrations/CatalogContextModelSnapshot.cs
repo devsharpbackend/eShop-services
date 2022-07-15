@@ -27,7 +27,13 @@ namespace Catalog.API.Migrations
             modelBuilder.HasSequence("catalog_type_hilo")
                 .IncrementsBy(10);
 
-            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.Entity.CatalogItem", b =>
+            modelBuilder.HasSequence("supplier_hilo")
+                .IncrementsBy(10);
+
+            modelBuilder.HasSequence("supplierItem_hilo")
+                .IncrementsBy(10);
+
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogAggregate.CatalogItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,52 +42,59 @@ namespace Catalog.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "catalog_hilo");
 
                     b.Property<int>("AvailableStock")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CatalogBrandId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("AvailableStock");
 
                     b.Property<int>("CatalogTypeId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("CatalogTypeId");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Description");
 
-                    b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<bool>("IsDiscount")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsDiscount");
 
                     b.Property<int>("MaxStockThreshold")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("MaxStockThreshold");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("OnReorder")
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Name");
 
                     b.Property<string>("PictureFileName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PictureFileName");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Price");
 
                     b.Property<decimal>("PriceWithDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("PriceWithDiscount");
 
-                    b.Property<int>("RestockThreshold")
-                        .HasColumnType("int");
+                    b.Property<int>("StockThreshold")
+                        .HasColumnType("int")
+                        .HasColumnName("StockThreshold");
+
+                    b.Property<decimal>("_discount")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Discount");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CatalogTypeId");
 
-                    b.ToTable("Catalog", (string)null);
+                    b.ToTable("Catalog", "Catalog");
                 });
 
-            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.Entity.CatalogType", b =>
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogTypeAggregate.CatalogType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,22 +105,103 @@ namespace Catalog.API.Migrations
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("Type");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CatalogType", (string)null);
+                    b.ToTable("CatalogType", "Catalog");
                 });
 
-            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.Entity.CatalogItem", b =>
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.Supplier", b =>
                 {
-                    b.HasOne("eShop.Services.CatalogAPI.Domain.Entity.CatalogType", "CatalogType")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "supplier_hilo");
+
+                    b.Property<int>("CatalogTypeId")
+                        .HasColumnType("int")
+                        .HasColumnName("CatalogTypeId");
+
+                    b.Property<string>("SupplierName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("SupplierName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogTypeId");
+
+                    b.ToTable("Supplier", "Supplier");
+                });
+
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.SupplierItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "supplierItem_hilo");
+
+                    b.Property<int>("CatalogItemId")
+                        .HasColumnType("int")
+                        .HasColumnName("CatalogItemId");
+
+                    b.Property<int>("RequestedNumber")
+                        .HasColumnType("int")
+                        .HasColumnName("RequestedNumber");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int")
+                        .HasColumnName("SupplierId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatalogItemId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("SupplierItem", "Supplier");
+                });
+
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogAggregate.CatalogItem", b =>
+                {
+                    b.HasOne("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogTypeAggregate.CatalogType", null)
                         .WithMany()
                         .HasForeignKey("CatalogTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("CatalogType");
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.Supplier", b =>
+                {
+                    b.HasOne("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogTypeAggregate.CatalogType", null)
+                        .WithMany()
+                        .HasForeignKey("CatalogTypeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.SupplierItem", b =>
+                {
+                    b.HasOne("eShop.Services.CatalogAPI.Domain.AggregatesModel.CatalogAggregate.CatalogItem", null)
+                        .WithMany()
+                        .HasForeignKey("CatalogItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.Supplier", null)
+                        .WithMany("SupplierItems")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("eShop.Services.CatalogAPI.Domain.AggregatesModel.SupplierAggregate.Supplier", b =>
+                {
+                    b.Navigation("SupplierItems");
                 });
 #pragma warning restore 612, 618
         }

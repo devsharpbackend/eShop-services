@@ -28,6 +28,13 @@ public class CatalogContextSeed
 
             GetCatalogItemPictures(contentRootPath, picturePath);
         }
+
+        if (!context.Suppliers.Any())
+        {
+            await context.Suppliers.AddRangeAsync(SeedSupplier());
+
+            await context.SaveChangesAsync();
+        }
     }
 
     private IEnumerable<CatalogType> SeedCatalogTypes()
@@ -40,26 +47,34 @@ public class CatalogContextSeed
             new CatalogType( "USB Memory Stick") 
         };
     }
+    private IEnumerable<Supplier> SeedSupplier()
+    {
+        return new List<Supplier>()
+        {
+            new Supplier(supplierName:"supplier1",catalogTypeId:2),
+            new Supplier(supplierName:"supplier2",catalogTypeId:2),
+        };
+    }
 
     private IEnumerable<CatalogItem> SeedCatalogItems()
     {
         return new List<CatalogItem>()
         {
-             new CatalogItem (name: ".NET Bot Black Hoodie",description:".NET Bot Black Hoodie",price:19.5M,priceWithDiscount:19.5M,isDiscount:true,discount: 0,pictureFileName: "1.png"
+             new CatalogItem (name: ".NET Bot Black Hoodie",description:".NET Bot Black Hoodie",price:19.5M,isDiscount:true,pictureFileName: "1.png"
              ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
-             new CatalogItem (name:".NET Black & White Mug",description:".NET Black & White Mug",price:12.5M,priceWithDiscount:12.5M,isDiscount:true,discount: 0,pictureFileName: "2.png"
-             ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
-
-             new CatalogItem (name: "Prism White T-Shirt",description: "Prism White T-Shirt",price:12.5M,priceWithDiscount:12.5M,isDiscount:true,discount: 0,pictureFileName: "3.png"
+             new CatalogItem (name:".NET Black & White Mug",description:".NET Black & White Mug",price:12.5M,isDiscount:true,pictureFileName: "2.png"
              ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
 
-             new CatalogItem (name: ".NET Foundation T-shirt",description: ".NET Foundation T-shirt",price:13.5M,priceWithDiscount:13.5M,isDiscount:true,discount: 0,pictureFileName: "4.png"
+             new CatalogItem (name: "Prism White T-Shirt",description: "Prism White T-Shirt",price:12.5M,isDiscount:true,pictureFileName: "3.png"
              ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
 
-              new CatalogItem (name: ".Roslyn Red Sheet",description: "Roslyn Red Sheet",price:8.5M,priceWithDiscount:8.5M,isDiscount:true,discount: 0,pictureFileName: "5.png"
+             new CatalogItem (name: ".NET Foundation T-shirt",description: ".NET Foundation T-shirt",price:13.5M,isDiscount:true,pictureFileName: "4.png"
              ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
 
-                new CatalogItem (name: ".NET Blue Hoodie",description: ".NET Blue Hoodie",price:8.5M,priceWithDiscount:12M,isDiscount:true,discount: 0,pictureFileName: "6.png"
+              new CatalogItem (name: ".Roslyn Red Sheet",description: "Roslyn Red Sheet",price:8.5M,isDiscount:true,pictureFileName: "5.png"
+             ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
+
+                new CatalogItem (name: ".NET Blue Hoodie",description: ".NET Blue Hoodie",price:8.5M,isDiscount:true,pictureFileName: "6.png"
              ,catalogTypeId:2,availableStock:100,stockThreshold:5,maxStockThreshold:10000),
 
 
