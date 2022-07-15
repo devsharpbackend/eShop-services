@@ -1,0 +1,13 @@
+﻿global using Serilog;
+global using eShop.BuildingBlocks.Logging.CommonLogging;
+global using System.Reflection;
+global using eShop.BuildingBlocks.Common.ErrorHandler;
+global using System.Net;
+global using eShop.BuildingBlocks.Event.CommonEvent.Events;
+global using MassTransit;
+global using Microsoft.AspNetCore.Server.Kestrel.Core;
+global using eShop.Services.Payment.PaymentAPI;
+global using LogContext = Serilog.Context.LogContext;
+global using eShop.BuildingBlocks.Event.CommonEvent.Commands;
+global using eShop.BuildingBlocks.Event.CommonEvent.Responses;
+global using eShop.BuildingBlocks.Event.CommonEvent.StateMachineEvent;
