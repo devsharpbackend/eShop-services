@@ -1,0 +1,17 @@
+﻿global using Microsoft.OpenApi.Models;
+global using Microsoft.AspNetCore.Mvc;
+global using Serilog;
+global using eShop.BuildingBlocks.Logging.CommonLogging;
+global using MediatR;
+global using eShop.BuildingBlocks.Common.ErrorHandler;
+global using eShop.Services.Discount.DiscountAPI;
+global using eShop.Services.Discount.DiscountAPI.Domain.Model;
+global using eShop.Services.Discount.DiscountAPI.Domain.SeedWork;
+global using Microsoft.Extensions.Options;
+global using eShop.Services.Discoun.DiscountAPIe.Repositories;
+global using Npgsql;
+global using Dapper;
+global using eShop.BuildingBlocks.Host.CommonHost;
+global using eShop.Services.Discount.Api.Infrastructure;
+global using System.Net;
+global using eShop.Services.Discount.DiscountAPI.Grpc;

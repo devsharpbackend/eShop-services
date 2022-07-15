@@ -1,0 +1,73 @@
+﻿syntax = "proto3";
+
+/* >>
+import "google/api/annotations.proto";
+<< */
+
+
+package CatalogGrpc;
+
+message CatalogItemRequest {
+	int32 id = 1;
+}
+
+message CatalogItemsRequest {
+	int32 PageCount = 2;
+	int32 PageIndex = 3;
+}
+
+message CatalogItemResponse {
+	int32 id = 1;
+	string name = 2;
+    string description=3;
+    double price=4;
+    double discount=5;
+    bool isDiscount=6;
+	string catalogTypeName = 7;
+    int32 availableStock =8;
+}
+
+
+
+message PaginatedItemsResponse {
+	
+	int64 count = 3;
+	repeated CatalogItemResponse data = 4;
+}
+message CreateCatalogRequest
+{
+	  string name=1;
+
+    string description=2;
+   
+     double price=3;
+   
+     bool isDiscount =4;
+    
+     string pictureFileName=6;
+   
+     int32 catalogTypeId =7;
+    
+     int32 availableStock =8;
+   
+     int32 stockThreshold =9;
+   
+     int32 maxStockThreshold=10;
+}
+message CreateCatalogResponse{
+    int32 id=1;
+}
+service Catalog {
+  rpc GetItemById (CatalogItemRequest) returns (CatalogItemResponse) {
+   /* >>
+  	option (google.api.http) = {
+        get: "/api/v1/catalog/items/{id}"
+      };
+	<< */
+	}
+
+ 
+  rpc GetItems (CatalogItemsRequest) returns (PaginatedItemsResponse) {}
+
+  rpc RegisterCatalogItem(CreateCatalogRequest) returns (CreateCatalogResponse){}
+}

@@ -10,6 +10,18 @@ services:
     volumes:
       - eshop-sqldata:/var/opt/mssql
 
+ discountdb:
+    container_name: discountdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=DiscountDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+
 
  catalog-api:
     env_file:
@@ -20,14 +32,32 @@ services:
       - PATH_BASE=${PATH_BASE}
       - SeqServerUrl=${SeqServerUrlVar}
       - LogstashgUrl=${LogstashUrlVar}
-
+      - DiscountUrl=http://discount-api/api/Discount/
+      - DiscountGrpcUrl=http://discount-api:81/
+      - GRPC_PORT=81
+      - PORT=80
+      - UseGrpc=true
     ports:
       - "5101:80"
       - "9101:81"
 
+ discount-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${ESHOP_AZURE_DISCOUNT_DB:-Server=discountdb;Port=5432;Database=servicesdiscountdb;User Id=admin;Password=admin1234;}
+      - PATH_BASE=${PATH_BASE_Discount}
+      - SeqServerUrl=${SeqServerUrlVar}
+      - LogstashgUrl=${LogstashUrlVar}
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5102:80"
+      - "9102:81"
 
 
 volumes:
   eshop-sqldata:
+    external: false
+  postgres-data:
     external: false
 
