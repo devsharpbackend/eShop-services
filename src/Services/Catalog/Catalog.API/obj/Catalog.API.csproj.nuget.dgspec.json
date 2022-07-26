@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
+    "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {}
   },
   "projects": {
-    "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+    "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
+        "projectUniqueName": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
         "projectName": "Common.Host",
-        "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
+        "projectPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj",
         "packagesPath": "C:\\Users\\devsharp\\.nuget\\packages\\",
-        "outputPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\obj\\",
+        "outputPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "H:\\MicroServiceProject\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\devsharp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -103,17 +103,17 @@
         }
       }
     },
-    "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+    "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
+        "projectUniqueName": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
         "projectName": "Common.Logging",
-        "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
+        "projectPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj",
         "packagesPath": "C:\\Users\\devsharp\\.nuget\\packages\\",
-        "outputPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\obj\\",
+        "outputPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "H:\\MicroServiceProject\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\devsharp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -189,17 +189,17 @@
         }
       }
     },
-    "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
+    "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectUniqueName": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
         "projectName": "Catalog.API",
-        "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+        "projectPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
         "packagesPath": "C:\\Users\\devsharp\\.nuget\\packages\\",
-        "outputPath": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
+        "outputPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "H:\\MicroServiceProject\\eShop-services\\src\\NuGet.Config",
+          "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\NuGet.Config",
           "C:\\Users\\devsharp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -215,11 +215,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
-                "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
+              "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj": {
+                "projectPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Host\\Common.Host\\Common.Host.csproj"
               },
-              "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
-                "projectPath": "H:\\MicroServiceProject\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
+              "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj": {
+                "projectPath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\BuildingBlocks\\Logging\\Common.Logging\\Common.Logging.csproj"
               }
             }
           }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zCzebgE3OriV72cAH4tqqCRILM4cw2sxXeWNuIacWk79iDCFxoKMgawShukupWJuEXfXUKMohxw98KSASA06og==",
+  "dgSpecHash": "JXuQuijJpKJxd25dbigucAbL50rpXIYD5TFSVoYfv05arzKRKYNh9DrWi9cmwnXJSIot/X4ns1ll33cVc0efog==",
   "success": true,
-  "projectFilePath": "H:\\MicroServiceProject\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
+  "projectFilePath": "C:\\Users\\devsharp\\Desktop\\New folder\\eShop-services\\src\\Services\\Catalog\\Catalog.API\\Catalog.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\devsharp\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\devsharp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

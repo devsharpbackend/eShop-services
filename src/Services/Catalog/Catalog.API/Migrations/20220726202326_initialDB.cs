@@ -4,7 +4,7 @@
 
 namespace Catalog.API.Migrations
 {
-    public partial class initialdv : Migration
+    public partial class initialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +24,10 @@ namespace Catalog.API.Migrations
 
             migrationBuilder.CreateSequence(
                 name: "supplier_hilo",
+                incrementBy: 10);
+
+            migrationBuilder.CreateSequence(
+                name: "supplierItem_hilo",
                 incrementBy: 10);
 
             migrationBuilder.CreateTable(
@@ -66,12 +70,6 @@ namespace Catalog.API.Migrations
                         column: x => x._catalogTypeId,
                         principalSchema: "Catalog",
                         principalTable: "CatalogType",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Catalog_CatalogType_CatalogTypeId",
-                        column: x => x.CatalogTypeId,
-                        principalSchema: "Catalog",
-                        principalTable: "CatalogType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -99,21 +97,32 @@ namespace Catalog.API.Migrations
 
             migrationBuilder.CreateTable(
                 name: "SupplierItem",
+                schema: "Supplier",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SupplierId1 = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    SupplierId = table.Column<int>(type: "int", nullable: false),
+                    RequestedNumber = table.Column<int>(type: "int", nullable: false),
+                    CatalogItemId = table.Column<int>(type: "int", nullable: false),
+                    _catalogItemId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SupplierItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SupplierItem_Supplier_SupplierId1",
-                        column: x => x.SupplierId1,
+                        name: "FK_SupplierItem_Catalog__catalogItemId",
+                        column: x => x._catalogItemId,
+                        principalSchema: "Catalog",
+                        principalTable: "Catalog",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SupplierItem_Supplier_SupplierId",
+                        column: x => x.SupplierId,
                         principalSchema: "Supplier",
                         principalTable: "Supplier",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -123,31 +132,33 @@ namespace Catalog.API.Migrations
                 column: "_catalogTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Catalog_CatalogTypeId",
-                schema: "Catalog",
-                table: "Catalog",
-                column: "CatalogTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Supplier__catalogTypeId",
                 schema: "Supplier",
                 table: "Supplier",
                 column: "_catalogTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SupplierItem_SupplierId1",
+                name: "IX_SupplierItem__catalogItemId",
+                schema: "Supplier",
                 table: "SupplierItem",
-                column: "SupplierId1");
+                column: "_catalogItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupplierItem_SupplierId",
+                schema: "Supplier",
+                table: "SupplierItem",
+                column: "SupplierId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Catalog",
-                schema: "Catalog");
+                name: "SupplierItem",
+                schema: "Supplier");
 
             migrationBuilder.DropTable(
-                name: "SupplierItem");
+                name: "Catalog",
+                schema: "Catalog");
 
             migrationBuilder.DropTable(
                 name: "Supplier",
@@ -165,6 +176,9 @@ namespace Catalog.API.Migrations
 
             migrationBuilder.DropSequence(
                 name: "supplier_hilo");
+
+            migrationBuilder.DropSequence(
+                name: "supplierItem_hilo");
         }
     }
 }

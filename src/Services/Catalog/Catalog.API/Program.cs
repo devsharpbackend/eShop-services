@@ -9,7 +9,6 @@ try
 
     host.MigrateDataBase<Program>((services) =>
     {
-
         var context = services.GetService<CatalogContext>();
         var env = services.GetService<IWebHostEnvironment>();
         var logger = services.GetRequiredService<ILogger<CatalogContextSeed>>();
