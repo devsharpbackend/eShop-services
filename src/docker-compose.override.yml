@@ -1,0 +1,151 @@
+version: '3.4'
+
+services:
+ sqldata:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - eshop-sqldata:/var/opt/mssql
+
+ discountdb:
+    container_name: discountdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=DiscountDb
+    restart: always
+    ports:
+      - "5422:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+
+ basketdata:
+    ports:
+      - "6379:6379"
+    volumes:
+      - eshop-basketdata:/data
+
+ rabbitmq:
+    ports:
+      - "15673:15672"
+      - "5673:5672"
+
+ catalog-api:
+    env_file:
+     - catalog.env 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${ESHOP_CATALOG_DB:-Server=sqldata;Database=Services.CatalogDb;User Id=sa;Password=Pass@word}
+      - PATH_BASE=${PATH_BASE_Catalog}
+      - SeqServerUrl=${SeqServerUrlVar}
+      - LogstashgUrl=${LogstashUrlVar}
+      - DiscountUrl=http://discount-api/api/Discount/
+      - DiscountGrpcUrl=http://discount-api:81/
+      - DiscountZerqUrl=tcp://discount-api:12345
+      - GRPC_PORT=81
+      - PORT=80
+      - UseGrpc=true
+      - CheckUpdateTimeForEventPublinsherWorker=5000
+    ports:
+      - "5101:80"
+      - "9101:81"
+
+ discount-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${ESHOP_AZURE_DISCOUNT_DB:-Server=discountdb;Port=5432;Database=servicesdiscountdb;User Id=admin;Password=admin1234;}
+      - PATH_BASE=${PATH_BASE_Discount}
+      - SeqServerUrl=${SeqServerUrlVar}
+      - LogstashgUrl=${LogstashUrlVar}
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5102:80"
+      - "9102:81"
+
+ basket-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionString=${ESHOP_AZURE_REDIS_BASKET_DB:-basketdata}
+      - identityUrl=http://identity-api
+      - IdentityUrlExternal=http://localhost:5120 #http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5120
+      - PATH_BASE=${PATH_BASE_Basket}
+      - CatalogZerqUrl=tcp://catalog-api:12345
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5103:80"
+      - "9103:81"
+
+ ordering-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionString=${ESHOP_AZURE_ORDERING_DB:-Server=sqldata;Database=Services.OrderingDb;User Id=sa;Password=Pass@word}
+      - CheckUpdateTimeForEventPublinsherWorker=5000
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - identityUrl=http://identity-api
+      - IdentityUrlExternal=http://localhost:5120 #http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5120
+      - PATH_BASE=${PATH_BASE_Ordering}
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5105:80"
+      - "9105:81"
+
+ payemnt-api:
+  environment:
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - PATH_BASE=/payment-api
+      - GRPC_PORT=81
+      - PORT=80
+  ports:
+      - "5106:80"
+      - "9106:81"
+
+ identity-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionString=${ESHOP_AZURE_IDENTITY_DB:-Server=sqldata;Database=Service.IdentityDb;User Id=sa;Password=Pass@word}
+      - BasketApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5103
+      - OrderingApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
+      - WebShoppingAggClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5107
+      - webshoppingapigwClient=http://localhost
+      - UseCustomizationData=True
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+    ports:
+      - "5120:80"
+      - "5121:443"
+
+ webshoppingapigw:
+    volumes:
+      - ./ApiGateways/Envoy/config/webshopping:/etc/envoy
+    ports:
+    - "80:80"
+    - "81:81"
+    - "8001:8001"
+
+ webshoppingagg:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - GRPC_PORT=81
+      - PORT=80
+      - identityUrl=http://identity-api
+      - IdentityUrlExternal=http://localhost:5120 #http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5120
+      - urls__grpcBasket=http://basket-api:81
+      - urls__grpcCatalog=http://catalog-api:81
+    ports:
+      - "5107:80"
+      - "9107:81"
+
+volumes:
+  eshop-sqldata:
+    external: false
+  postgres-data:
+    external: false
+  eshop-basketdata:
+     external: false
